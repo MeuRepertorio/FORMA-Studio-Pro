@@ -12,25 +12,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - name: Gerar bibliotecas de importação e exportação
+      - name: Baixar bibliotecas oficiais com versões fixadas
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p slides/vendor .forma-slides-deps
-          cd .forma-slides-deps
-          npm install --no-save --package-lock=false --ignore-scripts pptxgenjs@3.12.0 jszip@3.10.1
-          cp node_modules/pptxgenjs/dist/pptxgen.bundle.js ../slides/vendor/pptxgen.bundle.js
-          cp node_modules/jszip/dist/jszip.min.js ../slides/vendor/jszip.min.js
-          test -s ../slides/vendor/pptxgen.bundle.js
-          test -s ../slides/vendor/jszip.min.js
-          cd ..
+          mkdir -p slides/vendor
+          curl --fail --location --retry 3 --silent --show-error \
+            'https://unpkg.com/pptxgenjs@3.12.0/dist/pptxgen.bundle.js' \
+            --output slides/vendor/pptxgen.bundle.js
+          curl --fail --location --retry 3 --silent --show-error \
+            'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js' \
+            --output slides/vendor/jszip.min.js
+          test $(wc -c < slides/vendor/pptxgen.bundle.js) -gt 100000
+          test $(wc -c < slides/vendor/jszip.min.js) -gt 20000
+          head -c 120 slides/vendor/pptxgen.bundle.js
+          echo
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add slides/vendor/pptxgen.bundle.js slides/vendor/jszip.min.js
           if ! git diff --cached --quiet; then
-            git commit -m "chore(slides): bundle PowerPoint import and export engines"
+            git commit -m "chore(slides): vendor PowerPoint engines"
             git push
           fi
