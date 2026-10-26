@@ -42,8 +42,13 @@ const BASE='http://127.0.0.1:4173';
   const cdp=await mobile.newCDPSession(phone);
   await cdp.send('Input.synthesizeScrollGesture',{x:220,y:620,yDistance:-550,gestureSourceType:'touch',speed:650});
   await phone.waitForTimeout(550);
-  const y=await phone.evaluate(()=>scrollY);
-  assert(y>50,'Touch scrolling did not move the document: '+y);
+  const motion=await phone.evaluate(()=>{
+    const els=['html','body','.app-shell','.app-main','.work-area','.workspace-canvas','.content-area','.editor-paper']
+      .map(sel=>{const n=document.querySelector(sel);if(!n)return {sel,missing:true};const s=getComputedStyle(n);return {sel,scrollTop:n.scrollTop,scrollHeight:n.scrollHeight,clientHeight:n.clientHeight,overflowY:s.overflowY,display:s.display,position:s.position}});
+    return {scrollY,visualTop:visualViewport?.pageTop??null,els};
+  });
+  console.log('MOBILE TOUCH DIAGNOSTICS',JSON.stringify(motion));
+  assert(motion.scrollY>50 || motion.els.some(e=>e.scrollTop>50),'Touch scrolling did not move any document container');
   console.log('PASS mobile: native touch scroll and long Editor content');
   await mobile.close();
   const context=await browser.newContext();
