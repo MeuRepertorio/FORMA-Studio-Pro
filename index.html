@@ -2,9 +2,9 @@
 <html lang="pt-BR">
 <head>
  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
- <meta name="theme-color" content="#0c151c"><meta name="description" content="FORMA Studio Pro: três ferramentas conectadas para pesquisar, escrever relatórios e editar apresentações em um só lugar.">
- <title>FORMA Studio Pro · Crie, pesquise e apresente</title><link rel="icon" href="icon.svg"><link rel="manifest" href="manifest.webmanifest">
- <link rel="stylesheet" href="style.css"><link rel="stylesheet" href="studio-v3.css"><link rel="stylesheet" href="suite-preferences.css"><link rel="stylesheet" href="suite-home.css"><script src="suite-preferences.js"></script>
+ <meta name="theme-color" content="#0c151c"><meta name="description" content="FORMA Studio Pro: painel profissional integrado para pesquisa, documentos e apresentações. Escolha estilos de interface, temas e layouts.">
+ <title>FORMA Studio Pro · Um ambiente completo de trabalho</title><link rel="icon" href="icon.svg"><link rel="manifest" href="manifest.webmanifest">
+ <link rel="stylesheet" href="style.css"><link rel="stylesheet" href="studio-v3.css"><link rel="stylesheet" href="suite-preferences.css"><link rel="stylesheet" href="suite-home.css"><link rel="stylesheet" href="suite-personas.css"><link rel="stylesheet" href="suite-documents.css"><script src="suite-preferences.js"></script>
 
 </head>
 <body data-forma-app="studio">
@@ -42,9 +42,9 @@
     <div class="suite-home-inner">
       <section class="suite-hero" aria-labelledby="suiteHomeTitle">
         <div class="suite-hero-copy">
-          <span class="suite-kicker">FORMA STUDIO · SUA CENTRAL DE CRIAÇÃO</span>
-          <h1 id="suiteHomeTitle">Ideias ganham forma.<br><em>O trabalho fica mais leve.</em></h1>
-          <p>Da primeira pesquisa ao documento pronto e à apresentação final. Três ferramentas, um único lugar para criar, desenvolver e entregar com confiança.</p>
+          <span class="suite-kicker">FORMA STUDIO · WORKSPACE PROFISSIONAL INTEGRADO</span>
+          <h1 id="suiteHomeTitle">Planeje com clareza.<br><em>Produza com precisão.</em></h1>
+          <p>Pesquisa, produção de documentos e apresentações em um fluxo único. Um ambiente profissional, adaptável ao seu método de trabalho.</p>
           <div class="suite-hero-actions">
             <button type="button" class="suite-primary" data-nav="workspace">▤ Continuar no Editor <span aria-hidden="true">↗</span></button>
             <button type="button" class="suite-secondary" data-open-suite-settings>◉ Escolher aparência</button>
@@ -113,5 +113,5 @@
 <div id="modalLayer" class="modal-layer hidden" role="presentation"><div class="modal-backdrop" data-close="true"></div><div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-head"><div><div id="modalKicker" class="modal-kicker">FORMA STUDIO</div><h2 id="modalTitle">Janela</h2></div><button id="modalClose" class="iconbtn" aria-label="Fechar">×</button></div><div id="modalContent" class="modal-content"></div><div id="modalFooter" class="modal-footer"></div></div></div>
 <div id="commandLayer" class="command-layer hidden"><div class="command-shade" data-command-dismiss="true"></div><div class="command-box"><div class="command-top">⌕ <input id="commandSearch" placeholder="Buscar um relatório, documento ou comando..." autocomplete="off" aria-label="Buscar no estúdio"><kbd>ESC</kbd></div><div id="commandResults" class="command-results"></div></div></div>
 <input type="file" id="mediaImport" accept="image/png,image/jpeg,image/webp" hidden><input type="file" id="fileImport" accept=".json,.txt,.md,.docx" hidden><input type="file" id="fileDocImport" accept=".json,.txt,.md,.docx" hidden>
-<script src="repertorio.js"></script><script src="app.js"></script><script src="research/bridge-doc.js"></script><script src="suite-home.js"></script><script>if('serviceWorker' in navigator && /^https?:$/.test(location.protocol))navigator.serviceWorker.register('./sw.js').catch(()=>{});</script>
+<script src="repertorio.js"></script><script src="app.js"></script><script src="research/bridge-doc.js"></script><script src="suite-home.js"></script><script src="suite-documents.js"></script><script>if('serviceWorker' in navigator && /^https?:$/.test(location.protocol))navigator.serviceWorker.register('./sw.js').catch(()=>{});</script>
 </body></html>

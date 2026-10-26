@@ -1,0 +1,26 @@
+name: FORMA Suite · Modelos profissionais e documentos
+on:
+  push:
+    paths:
+      - 'suite-preferences.js'
+      - 'suite-personas.css'
+      - 'suite-documents.js'
+      - 'suite-documents.css'
+      - 'index.html'
+      - 'slides/index.html'
+      - 'research/index.html'
+      - 'tests/suite-personas-check.cjs'
+      - '.github/workflows/forma-personas-check.yml'
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verificar scripts e modelos
+        run: node tests/suite-personas-check.cjs
