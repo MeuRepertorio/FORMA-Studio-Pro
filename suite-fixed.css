@@ -141,3 +141,11 @@ body[data-forma-app="research"] .modal-back{background:#122a3b9c!important}
  body[data-forma-app="studio"] .content-area{overflow-x:visible!important;overflow-y:visible!important;max-width:100%;}
  body[data-forma-app="studio"] .content-width{max-width:100%;min-width:0}
 }
+
+/* Touch intent: contenteditable text may be tapped/edited while vertical swipes remain native. */
+@media screen and (max-width:850px){
+  body[data-forma-app="studio"] .content-area,
+  body[data-forma-app="studio"] .workspace-canvas,
+  body[data-forma-app="studio"] .editor-paper,
+  body[data-forma-app="studio"] .section-editor{touch-action:pan-y pinch-zoom!important;}
+}
