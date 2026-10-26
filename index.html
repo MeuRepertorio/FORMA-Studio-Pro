@@ -17,6 +17,7 @@
   <button class="nav-item" data-nav="wizard"><span class="navico">✦</span> Criar por assunto</button>
   <button class="nav-item" data-nav="templates"><span class="navico">▦</span> Modelos</button>
   <a class="nav-item forma-slides-entry" href="./slides/" title="Abrir o FORMA Slides para importar e editar arquivos PPTX"><span class="navico">▣</span><span>Apresentações</span><span class="tinycount">NOVO</span></a>
+  <a class="nav-item forma-slides-entry" href="./research/" title="Projetos, fontes, pesquisas e decisões"><span class="navico">◈</span><span>Pesquisas</span><span class="tinycount">NOVO</span></a>
   <button class="nav-item" data-nav="library"><span class="navico">◈</span> Repertório</button>
   <div class="sidebar-rule"></div>
   <div class="sidebar-section-label between">MEUS DOCUMENTOS <button class="smallplus" id="btnNewDocSide" aria-label="Criar documento">+</button></div>
@@ -31,7 +32,7 @@
  <div class="app-main">
   <header class="topbar">
    <div class="top-left"><button class="iconbtn mobile-only" id="openSide" aria-label="Abrir navegação">☰</button><span class="top-location-icon">◈</span><div class="top-crumb"><span>Meu estúdio</span><span class="crumb-sep">/</span><span id="crumbName">Documento</span></div></div>
-   <div class="top-right"><a class="forma-slides-shortcut" href="./slides/" title="Editor de apresentações PPTX">▣ <span>FORMA Slides</span></a><span id="saveStatus" class="saved-status"><span class="saved-mark">●</span> Salvo neste dispositivo</span><button class="action ghost" id="btnImport">↥ <span class="desktop-only">Importar</span></button><button class="action primary" id="btnNewDoc">+ <span class="desktop-only">Novo documento</span></button></div>
+   <div class="top-right"><a class="forma-slides-shortcut" href="./slides/" title="Editor de apresentações PPTX">▣ <span>FORMA Slides</span></a><a class="forma-slides-shortcut" href="./research/" title="Organizar pesquisas e projetos">◈ <span>FORMA Research</span></a><span id="saveStatus" class="saved-status"><span class="saved-mark">●</span> Salvo neste dispositivo</span><button class="action ghost" id="btnImport">↥ <span class="desktop-only">Importar</span></button><button class="action primary" id="btnNewDoc">+ <span class="desktop-only">Novo documento</span></button></div>
   </header>
   <div class="work-area" id="editorWorkspace">
     <div class="work-head">
@@ -56,5 +57,5 @@
 <div id="modalLayer" class="modal-layer hidden" role="presentation"><div class="modal-backdrop" data-close="true"></div><div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-head"><div><div id="modalKicker" class="modal-kicker">FORMA STUDIO</div><h2 id="modalTitle">Janela</h2></div><button id="modalClose" class="iconbtn" aria-label="Fechar">×</button></div><div id="modalContent" class="modal-content"></div><div id="modalFooter" class="modal-footer"></div></div></div>
 <div id="commandLayer" class="command-layer hidden"><div class="command-shade" data-command-dismiss="true"></div><div class="command-box"><div class="command-top">⌕ <input id="commandSearch" placeholder="Buscar um relatório, documento ou comando..." autocomplete="off" aria-label="Buscar no estúdio"><kbd>ESC</kbd></div><div id="commandResults" class="command-results"></div></div></div>
 <input type="file" id="mediaImport" accept="image/png,image/jpeg,image/webp" hidden><input type="file" id="fileImport" accept=".json,.txt,.md,.docx" hidden><input type="file" id="fileDocImport" accept=".json,.txt,.md,.docx" hidden>
-<script src="repertorio.js"></script><script src="app.js"></script><script>if('serviceWorker' in navigator && /^https?:$/.test(location.protocol))navigator.serviceWorker.register('./sw.js').catch(()=>{});</script>
+<script src="repertorio.js"></script><script src="app.js"></script><script src="research/bridge-doc.js"></script><script>if('serviceWorker' in navigator && /^https?:$/.test(location.protocol))navigator.serviceWorker.register('./sw.js').catch(()=>{});</script>
 </body></html>

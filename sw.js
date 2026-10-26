@@ -1,5 +1,5 @@
 /* FORMA Studio Pro — cache v3.2: navegações online usam a versão atual, com fallback offline. */
-const CACHE='forma-studio-pro-v3.2.0';
+const CACHE='forma-studio-pro-v3.3.0';
 const CORE=['./','./index.html','./style.css','./studio-v3.css','./app.js','./repertorio.js','./manifest.webmanifest','./icon.svg'];
 self.addEventListener('install',event=>{
   event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(CORE)).then(()=>self.skipWaiting()));

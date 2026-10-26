@@ -1,0 +1,30 @@
+name: FORMA Research · verificar aplicação
+on:
+  push:
+    paths:
+      - 'research/**'
+      - '.github/workflows/research-check.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verificar sintaxe dos scripts
+        run: |
+          node --check research/app.js
+          node --check research/bridge-doc.js
+          node --check research/sw.js
+      - name: Executar verificações do fluxo local
+        run: node research/tests/smoke.cjs
+      - name: Verificar arquivos e metadados
+        run: |
+          test -s research/index.html
+          test -s research/style.css
+          test -s research/manifest.webmanifest
+          python -m json.tool research/manifest.webmanifest >/dev/null
