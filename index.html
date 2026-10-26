@@ -1,31 +1,58 @@
-<!DOCTYPE html>
-<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#101c29"><meta name="description" content="FORMA Studio — documentos profissionais feitos de forma visual, organizada e orientada. Funciona offline."><title>FORMA Studio Pro — Editor de documentos profissionais</title><link rel="stylesheet" href="style.css"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg"></head>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+ <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+ <meta name="theme-color" content="#0c151c"><meta name="description" content="FORMA Studio Pro · editor profissional de documentos, com planejamento de relatórios sem IA, formatação avançada e trabalho offline.">
+ <title>FORMA Studio Pro · Estúdio de documentos</title><link rel="icon" href="icon.svg"><link rel="manifest" href="manifest.webmanifest">
+ <link rel="stylesheet" href="style.css"><link rel="stylesheet" href="studio-v3.css">
+</head>
 <body>
-<div id="app" class="app-shell">
-  <aside id="side" class="sidebar">
-    <div class="brand"><div class="brand-glyph"><span>F</span></div><div><div class="brand-name">FORMA<span class="trademark">/</span></div><div class="brand-sub">STUDIO DE DOCUMENTOS</div></div><button id="closeSide" class="iconbtn mobile-only" title="Fechar menu" aria-label="Fechar menu">×</button></div>
-    <div class="sidebar-section-label">ESPAÇO DE TRABALHO</div>
-    <button class="nav-item active" data-nav="workspace"><span class="navico">▤</span> Meus documentos <span id="docCounter" class="tinycount">0</span></button>
-    <button class="nav-item" data-nav="templates"><span class="navico">▦</span> Modelos prontos</button>
-    <button class="nav-item" data-nav="library"><span class="navico">◈</span> Repertório de escrita</button>
-    <a class="nav-item download-nav" href="downloads.html"><span class="navico">⇩</span> Download para Windows</a>
-    <div class="sidebar-rule"></div>
-    <div class="sidebar-section-label between">PROJETOS <button class="smallplus" id="btnNewDocSide" aria-label="Novo documento">+</button></div>
-    <div id="docList" class="doc-list"></div>
-    <div class="sidebar-bottom"><div class="offline-chip"><span class="dot"></span> Funciona offline</div><button class="backup-btn" id="backupAll">↓ Exportar todo o trabalho</button><div class="side-note">Dados salvos neste dispositivo. Guarde cópias de segurança.</div></div>
-  </aside>
-  <div id="sideShade" class="side-shade"></div>
-  <div class="app-main">
-    <header class="topbar"><div class="top-left"><button class="iconbtn mobile-only" id="openSide" aria-label="Abrir menu">☰</button><div class="top-crumb"><span>ÁREA DE CRIAÇÃO</span><span class="crumb-sep">/</span><span id="crumbName">Documento</span></div></div><div class="top-right"><span class="saved-status" id="saveStatus"><span class="saved-mark">●</span> Pronto</span><button class="action ghost" id="btnImport">↥ <span class="desktop-only">Importar</span></button><button class="action primary" id="btnNewDoc">+ <span class="desktop-only">Novo</span></button></div></header>
-    <div id="editorWorkspace" class="work-area">
-      <div class="work-head"><div class="head-main"><div class="eyebrow">DOCUMENTO ATIVO <span id="docTypeLabel" class="typepill">RELATÓRIO</span></div><input id="docTitle" class="doc-title" placeholder="Nome do documento" spellcheck="true" aria-label="Título do documento"><input id="docSubtitle" class="doc-subtitle" placeholder="Descrição breve ou objetivo do documento (opcional)" aria-label="Descrição do documento"></div><div class="head-actions"><button class="outline small" id="btnTemplates">▦ Aplicar modelo</button><button class="outline small" id="btnExport">↧ Exportar</button><button class="dots" id="btnOptions" title="Opções">⋯</button></div></div>
-      <div class="views-bar"><div class="view-tabs" role="tablist"><button class="view-tab active" data-view="write">✎ <span>Escrever</span></button><button class="view-tab" data-view="map">▦ <span>Mapa visual</span></button><button class="view-tab" data-view="paper">▤ <span>Documento</span></button></div><div class="view-tools"><span class="word-counter" id="wordCounter">0 palavras</span><button id="focusMode" class="subtle-btn" title="Modo foco">⛶ <span class="desktop-only">Foco</span></button></div></div>
-      <div class="workspace-canvas"><main id="content" class="content-area" tabindex="-1"></main><aside class="inspector" id="inspector"><div class="inspector-tabs"><button data-panel="guide" class="inspector-tab active">Orientador</button><button data-panel="format" class="inspector-tab">Aparência</button></div><div id="inspectorContent" class="inspector-body"></div></aside></div>
-    </div>
-    <div id="specialPage" class="special-page hidden"></div>
+<div class="app-shell" id="app">
+ <aside class="sidebar" id="side">
+  <div class="brand"><div class="brand-glyph"><span>F</span></div><div><div class="brand-name">FORMA <span class="brand-pro">STUDIO</span></div><div class="brand-sub">DOCUMENT WORKSPACE · PRO</div></div><button class="iconbtn mobile-only" id="closeSide" aria-label="Fechar menu">×</button></div>
+  <button class="search-command" id="btnCommand" title="Buscar documentos, temas e comandos"><span>⌕</span> Buscar no estúdio <kbd>Ctrl K</kbd></button>
+  <div class="sidebar-section-label">ÁREA DE TRABALHO</div>
+  <button class="nav-item active" data-nav="workspace"><span class="navico">▤</span> Editor <span class="tinycount" id="docCounter">0</span></button>
+  <button class="nav-item" data-nav="wizard"><span class="navico">✦</span> Criar por assunto</button>
+  <button class="nav-item" data-nav="templates"><span class="navico">▦</span> Modelos</button>
+  <button class="nav-item" data-nav="library"><span class="navico">◈</span> Repertório</button>
+  <div class="sidebar-rule"></div>
+  <div class="sidebar-section-label between">MEUS DOCUMENTOS <button class="smallplus" id="btnNewDocSide" aria-label="Criar documento">+</button></div>
+  <div id="docList" class="doc-list"></div>
+  <div class="sidebar-bottom">
+   <div class="storage-state"><span class="storage-pulse"></span><div><strong>Local e privado</strong><small>Seus textos ficam no dispositivo</small></div></div>
+   <button class="backup-btn" id="backupAll">↧ Salvar backup do estúdio</button>
+   <div class="side-note">Dica: salve uma cópia JSON do trabalho regularmente.</div>
   </div>
+ </aside>
+ <div id="sideShade" class="side-shade"></div>
+ <div class="app-main">
+  <header class="topbar">
+   <div class="top-left"><button class="iconbtn mobile-only" id="openSide" aria-label="Abrir navegação">☰</button><span class="top-location-icon">◈</span><div class="top-crumb"><span>Meu estúdio</span><span class="crumb-sep">/</span><span id="crumbName">Documento</span></div></div>
+   <div class="top-right"><span id="saveStatus" class="saved-status"><span class="saved-mark">●</span> Salvo neste dispositivo</span><button class="action ghost" id="btnImport">↥ <span class="desktop-only">Importar</span></button><button class="action primary" id="btnNewDoc">+ <span class="desktop-only">Novo documento</span></button></div>
+  </header>
+  <div class="work-area" id="editorWorkspace">
+    <div class="work-head">
+     <div class="head-main"><div class="eyebrow">ESTÚDIO / <span id="docTypeLabel" class="typepill">RELATÓRIO</span></div><input id="docTitle" class="doc-title" aria-label="Título do documento" placeholder="Título do documento" spellcheck="true"><input id="docSubtitle" class="doc-subtitle" aria-label="Descrição do documento" placeholder="Objetivo ou descrição do documento"></div>
+     <div class="head-actions"><button id="btnTemplates" class="outline small">▦ Estruturas</button><button id="btnExport" class="outline small">↧ Exportar arquivo</button><button id="btnOptions" class="dots" title="Opções do documento">⋯</button></div>
+    </div>
+    <div class="views-bar">
+     <div class="view-tabs" role="tablist"><button class="view-tab active" data-view="write">✎ <span>Escrever</span></button><button class="view-tab" data-view="map">◇ <span>Mapa visual</span></button><button class="view-tab" data-view="paper">▤ <span>Página final</span></button></div>
+     <div class="view-tools"><span class="word-counter" id="wordCounter">0 palavras</span><button id="btnInspectorMobile" class="subtle-btn mobile-only" title="Abrir propriedades">⚙</button><button id="focusMode" class="subtle-btn" title="Modo foco">⛶ <span class="desktop-only">Modo foco</span></button></div>
+    </div>
+    <div class="workspace-canvas">
+     <aside id="outlinePanel" class="outline-panel"><div class="outline-head"><div><span>DOCUMENTO</span><h3>Estrutura</h3></div><button id="btnAddOutline" class="outline-add" title="Adicionar seção">+</button></div><div class="outline-scroll" id="outlineList"></div><div class="outline-bottom"><div class="outline-stat"><span>Progresso de redação</span><strong id="outlineCoverage">0%</strong></div><div class="outline-progress"><span id="outlineProgressFill"></span></div><small id="outlineCount">0 seções</small></div></aside>
+     <main id="content" class="content-area" tabindex="-1"></main>
+     <aside class="inspector" id="inspector"><div class="inspector-tabs"><button data-panel="format" class="inspector-tab active">Página</button><button data-panel="guide" class="inspector-tab">Orientador</button><button data-panel="analysis" class="inspector-tab">Análise</button></div><div id="inspectorContent" class="inspector-body"></div></aside>
+    </div>
+    <div class="editor-statusbar"><div><span class="status-dot"></span> Edição local <span class="status-sep">·</span> <span id="statusSections">Seções organizadas</span></div><div><span id="statusWords">0 palavras</span><span class="status-sep">·</span> Português (Brasil) <span class="status-sep">·</span> <span id="statusZoom">100%</span></div></div>
+   </div>
+   <div id="specialPage" class="special-page hidden"></div>
+ </div>
 </div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-<div class="modal-layer hidden" id="modalLayer" role="presentation"><div class="modal-backdrop" data-close="true"></div><div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-head"><div><div class="modal-kicker" id="modalKicker">FORMA STUDIO</div><h2 id="modalTitle">Janela</h2></div><button class="iconbtn" id="modalClose" aria-label="Fechar">×</button></div><div id="modalContent" class="modal-content"></div><div id="modalFooter" class="modal-footer"></div></div></div>
+<div id="modalLayer" class="modal-layer hidden" role="presentation"><div class="modal-backdrop" data-close="true"></div><div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-head"><div><div id="modalKicker" class="modal-kicker">FORMA STUDIO</div><h2 id="modalTitle">Janela</h2></div><button id="modalClose" class="iconbtn" aria-label="Fechar">×</button></div><div id="modalContent" class="modal-content"></div><div id="modalFooter" class="modal-footer"></div></div></div>
+<div id="commandLayer" class="command-layer hidden"><div class="command-shade" data-command-dismiss="true"></div><div class="command-box"><div class="command-top">⌕ <input id="commandSearch" placeholder="Buscar um relatório, documento ou comando..." autocomplete="off" aria-label="Buscar no estúdio"><kbd>ESC</kbd></div><div id="commandResults" class="command-results"></div></div></div>
 <input type="file" id="mediaImport" accept="image/png,image/jpeg,image/webp" hidden><input type="file" id="fileImport" accept=".json,.txt,.md,.docx" hidden><input type="file" id="fileDocImport" accept=".json,.txt,.md,.docx" hidden>
-<script src="app.js"></script><script>if("serviceWorker" in navigator && /^https?:$/.test(location.protocol)) navigator.serviceWorker.register("./sw.js").catch(()=>{});</script></body></html>
+<script src="repertorio.js"></script><script src="app.js"></script><script>if('serviceWorker' in navigator && /^https?:$/.test(location.protocol))navigator.serviceWorker.register('./sw.js').catch(()=>{});</script>
+</body></html>

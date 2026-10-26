@@ -1,11 +1,10 @@
-# FORMA Studio Pro 2.0 — Windows
+# FORMA Studio Pro 3.0 · Precision V3
 
-Editor de documentos e relatórios em português, com versões para Windows 64 bits e navegador.
+- Redesign completo da interface escura com área central de edição, estrutura e propriedades.
+- 25 roteiros profissionais de relatórios por assunto sem uso de inteligência artificial.
+- Assistência de escrita contextual e diagnóstico por regras.
+- Mantidas as funções de edição, documentos, configuração de papel e exportação.
+- Suporte a aplicativo instalável offline, e compilação Windows no GitHub Actions.
+- Removido menu de downloads com links sem destino permanente.
 
-## Downloads
-- **Instalador:** `FORMA-Studio-Pro-Instalador-Windows.exe` — instala o programa.
-- **Portátil:** `FORMA-Studio-Pro-Portatil-Windows.exe` — executável independente, sem instalador.
-
-**Avisos:** aplicativos não assinados podem gerar alerta do SmartScreen; o conteúdo dos documentos fica salvo localmente; exporte backups JSON regularmente. Não há sincronização automática entre computador e site.
-
-**Limitações conhecidas:** o DOCX não mantém todos os recursos avançados do Word; numeração real e sumários paginados não estão implementados, e documentos complexos podem exigir ajuste final.
+**Os artefatos Windows do GitHub Actions não são Releases permanentes.**

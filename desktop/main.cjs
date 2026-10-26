@@ -2,7 +2,7 @@ const {app,BrowserWindow,shell,dialog,session}=require('electron');
 const path=require('node:path');
 let mainWindow;
 const start=()=>{
- mainWindow=new BrowserWindow({width:1520,height:1000,minWidth:860,minHeight:650,backgroundColor:'#f5f8f7',show:false,autoHideMenuBar:true,webPreferences:{nodeIntegration:false,contextIsolation:true,sandbox:true,webSecurity:true}});
+ mainWindow=new BrowserWindow({width:1520,height:1000,minWidth:860,minHeight:650,backgroundColor:'#0d1922',show:false,autoHideMenuBar:true,webPreferences:{nodeIntegration:false,contextIsolation:true,sandbox:true,webSecurity:true}});
  mainWindow.loadFile(path.join(__dirname,'../index.html'));
  mainWindow.once('ready-to-show',()=>mainWindow.show());
  mainWindow.webContents.setWindowOpenHandler(({url})=>{
