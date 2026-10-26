@@ -21,7 +21,7 @@ jobs:
           set -euo pipefail
           mkdir -p slides/vendor .forma-slides-deps
           cd .forma-slides-deps
-          npm install --no-save --package-lock=false --ignore-scripts pptxgenjs@4.0.0 jszip@3.10.1
+          npm install --no-save --package-lock=false --ignore-scripts pptxgenjs@3.12.0 jszip@3.10.1
           cp node_modules/pptxgenjs/dist/pptxgen.bundle.js ../slides/vendor/pptxgen.bundle.js
           cp node_modules/jszip/dist/jszip.min.js ../slides/vendor/jszip.min.js
           test -s ../slides/vendor/pptxgen.bundle.js

@@ -36,7 +36,7 @@ Este projeto é uma página estática na pasta `/slides` do repositório [FORMA 
 
 ## Licenças de bibliotecas
 
-- PptxGenJS v4.0.0, MIT — <https://github.com/gitbrent/PptxGenJS>
+- PptxGenJS v3.12.0 (no GitHub Pages), MIT — <https://github.com/gitbrent/PptxGenJS>
 - JSZip v3.10.1, MIT/GPLv3 — <https://stuk.github.io/jszip/>
 
 O código deste editor foi desenvolvido para integrar a suíte FORMA Studio Pro.
