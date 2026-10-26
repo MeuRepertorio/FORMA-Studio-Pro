@@ -1,6 +1,6 @@
 /* FORMA Studio Pro — cache v3.2: navegações online usam a versão atual, com fallback offline. */
-const CACHE='forma-studio-pro-v6.0.0';
-const CORE=['./','./index.html','./style.css','./studio-v3.css','./app.js','./repertorio.js','./suite-preferences.css','./suite-home.js','./suite-home.css','./suite-personas.css','./suite-fixed.css','./editor/index.html','./suite-documents.css','./suite-documents.js','./manifest.webmanifest','./icon.svg'];
+const CACHE='forma-studio-pro-v6.1.1';
+const CORE=['./','./index.html','./style.css','./studio-v3.css','./app.js','./repertorio.js','./suite-preferences.css','./suite-home.js','./suite-home.css','./suite-personas.css','./suite-fixed.css','./editor/index.html','./editor/editor-workspace-fix.css?v=6.1.1','./editor/editor-workspace-fix.js?v=6.1.1','./suite-documents.css','./suite-documents.js','./manifest.webmanifest','./icon.svg'];
 self.addEventListener('install',event=>{
   event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(CORE)).then(()=>self.skipWaiting()));
 });
