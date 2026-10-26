@@ -4,7 +4,8 @@
 
 - **Site / editor:** https://meurepertorio.github.io/FORMA-Studio-Pro/
 - **Central de downloads:** https://meurepertorio.github.io/FORMA-Studio-Pro/downloads.html
-- **Instaladores Windows:** https://github.com/MeuRepertorio/FORMA-Studio-Pro/releases/latest
+- **Pacote Windows 2.0 (instalador + portátil):** https://github.com/MeuRepertorio/FORMA-Studio-Pro/actions/runs/40283152671/artifacts/12633277581
+  (artefato temporário do GitHub Actions; login pode ser necessário). A publicação permanente em Releases depende da permissão de API do repositório.
 
 ## Recursos
 
