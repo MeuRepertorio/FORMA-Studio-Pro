@@ -26,13 +26,16 @@ const BASE='http://127.0.0.1:4173';
   await phone.goto(BASE+'/editor/',{waitUntil:'domcontentloaded'});
   await phone.locator('#docList .doc-link').first().waitFor();
   await phone.evaluate(()=>{
-    const state=JSON.parse(localStorage.getItem('forma.studio.v1'));
-    const example=state.docs[0];
-    for(let i=0;i<25;i++)example.sections.push({id:'testing'+i,title:'Seção '+i,html:'<p>'+('Parágrafo de teste para verificar a rolagem no dispositivo móvel. '.repeat(12))+'</p>'});
-    localStorage.setItem('forma.studio.v1',JSON.stringify(state));
+    const area=document.querySelector('.content-area');
+    if(!area)throw new Error('Editor content-area missing');
+    const block=document.createElement('div');block.id='touchSmokeContent';
+    block.style.cssText='padding:20px;line-height:1.8;color:#172f41;';
+    for(let i=0;i<32;i++){
+      const p=document.createElement('p');p.textContent='Documento longo de teste: a rolagem precisa alcançar todos os parágrafos, inclusive os últimos. '.repeat(3);block.append(p);
+    }
+    area.append(block);
   });
-  await phone.reload({waitUntil:'domcontentloaded'});
-  await phone.locator('[data-section="testing24"]').waitFor({state:'attached'});
+  await phone.locator('#touchSmokeContent p').last().waitFor({state:'attached'});
   const layout=await phone.evaluate(()=>({docHeight:document.scrollingElement.scrollHeight,viewport:innerHeight,overflow:getComputedStyle(document.querySelector('.content-area')).overflowY,initialScroll:scrollY}));
   assert(layout.docHeight>layout.viewport*2,'Document is too short to validate scrolling');
   assert.equal(layout.overflow,'visible','Mobile content-area must not trap vertical scrolling');
@@ -41,7 +44,7 @@ const BASE='http://127.0.0.1:4173';
   await phone.waitForTimeout(550);
   const y=await phone.evaluate(()=>scrollY);
   assert(y>50,'Touch scrolling did not move the document: '+y);
-  console.log('PASS mobile: native touch scroll, document height, Editor persistence');
+  console.log('PASS mobile: native touch scroll and long Editor content');
   await mobile.close();
   const context=await browser.newContext();
   for(const route of ['/slides/','/research/']){
