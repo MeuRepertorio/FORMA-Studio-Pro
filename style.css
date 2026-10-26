@@ -28,3 +28,6 @@
 .preset-row{display:flex;flex-wrap:wrap;gap:6px}
 @media(max-width:800px){.editor-toolbar{padding:7px 9px}.toolbtn{min-width:28px}.format-select{min-width:76px}.paper-sheet{width:100%!important;min-height:0!important;padding:24px!important}}
 @media print{.paper-sheet{width:100%!important;min-height:0!important;padding:0!important;font-size:var(--doc-size)!important}.paper-sheet .paper-body{font-size:var(--doc-size)!important;line-height:var(--doc-line)!important}.paper-footer{break-inside:avoid}}
+
+/* Acesso ao aplicativo Windows na navegação */
+.download-nav{display:flex;align-items:center;text-decoration:none;color:inherit;width:100%;min-height:40px}.download-nav:hover{background:rgba(255,255,255,.075)}
