@@ -1,0 +1,25 @@
+name: FORMA Suite · Central e aparência
+on:
+  push:
+    paths:
+      - 'index.html'
+      - 'app.js'
+      - 'suite-*.js'
+      - 'suite-*.css'
+      - 'slides/index.html'
+      - 'research/index.html'
+      - 'tests/suite-check.cjs'
+      - '.github/workflows/forma-suite-check.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Conferir módulos, preferências, sintaxe e atalhos
+        run: node tests/suite-check.cjs
