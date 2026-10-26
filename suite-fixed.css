@@ -1,0 +1,138 @@
+/* FORMA V6 — identidade única: Técnico + Porcelana. Compatível com os três estúdios. */
+:root,:root[data-forma-theme="porcelain"]{
+  color-scheme:light;
+  --suite-bg:#f2f5f8;--suite-side:#e9f0f5;--suite-surface:#ffffff;
+  --suite-raised:#e6edf3;--suite-line:#c6d4df;--suite-ink:#132d3e;
+  --suite-muted:#496374;--suite-accent:#155c86;--suite-accent-ink:#fff;
+  --suite-warm:#986731;--suite-glow:rgba(28,105,151,.09);
+}
+html{background:var(--suite-bg);color:var(--suite-ink);scroll-behavior:smooth}
+body[data-forma-app]{background:var(--suite-bg)!important;color:var(--suite-ink)!important}
+body[data-forma-app] :focus-visible{outline:2px solid #176b98!important;outline-offset:3px}
+body[data-forma-app] a{color:inherit}
+body[data-forma-app] a:hover{color:#10567e}
+/* Estúdio central e editor: hierarquia técnica, superfícies claras, tipografia legível. */
+body[data-forma-app="studio"] .app-main,body[data-forma-app="studio"] .work-area,
+body[data-forma-app="studio"] .workspace-canvas,
+body[data-forma-app="studio"] .content-area,
+body[data-forma-app="studio"] .special-page{background:var(--suite-bg)!important;color:var(--suite-ink)!important}
+body[data-forma-app="studio"] .topbar,
+body[data-forma-app="studio"] .sidebar,
+body[data-forma-app="studio"] .work-head,
+body[data-forma-app="studio"] .views-bar{background:var(--suite-side)!important;color:var(--suite-ink)!important;border-color:var(--suite-line)!important}
+body[data-forma-app="studio"] .work-head{background:linear-gradient(95deg,#e8f0f5,#fff)!important}
+body[data-forma-app="studio"] .doc-title,
+body[data-forma-app="studio"] .top-crumb,
+body[data-forma-app="studio"] .top-location-icon,
+body[data-forma-app="studio"] .brand-name,
+body[data-forma-app="studio"] .sidebar .nav-item,
+body[data-forma-app="studio"] .sidebar .suite-resources summary{color:#17394d!important}
+body[data-forma-app="studio"] .sidebar .nav-item:hover,
+body[data-forma-app="studio"] .sidebar .nav-item.active{color:#102f44!important;background:#d9e8f2!important;border-color:#91b7cb!important}
+body[data-forma-app="studio"] .doc-subtitle,
+body[data-forma-app="studio"] .eyebrow,
+body[data-forma-app="studio"] .view-tab,
+body[data-forma-app="studio"] .saved-status,
+body[data-forma-app="studio"] .sidebar .sidebar-section-label,
+body[data-forma-app="studio"] .sidebar .brand-sub{color:#4e697b!important}
+body[data-forma-app="studio"] .view-tab.active{color:#125577!important;border-bottom-color:#216e94!important}
+body[data-forma-app="studio"] .outline-panel,
+body[data-forma-app="studio"] .inspector{background:#f9fbfd!important;color:#17374a!important;border-color:var(--suite-line)!important}
+body[data-forma-app="studio"] .outline-panel *,body[data-forma-app="studio"] .inspector *{text-shadow:none}
+body[data-forma-app="studio"] .sidebar .doc-link{color:#193e53!important}
+body[data-forma-app="studio"] .sidebar .doc-link.selected{background:#d7e9f4!important;color:#0c456b!important}
+body[data-forma-app="studio"] .sidebar #docList{scrollbar-color:#9dbbcc transparent}
+body[data-forma-app="studio"] .search-command{border:1px solid var(--suite-line)!important;background:#fff!important;color:#24506c!important}
+body[data-forma-app="studio"] .studio-editor .editor-paper,
+body[data-forma-app="studio"] .paper-sheet{background:#fff!important;color:#1a3040!important}
+body[data-forma-app="studio"] .section-editor{color:#243d4e!important}
+body[data-forma-app="studio"] .section-title-input{color:#1d3a50!important}
+body[data-forma-app="studio"] .editor-statusbar{background:#e5eef4!important;color:#365366!important;border-color:var(--suite-line)!important}
+body[data-forma-app="studio"] #specialPage .special-inner{color:#1c384b!important}
+/* Central: botões e superfícies não herdam estilos escuros anteriores. */
+.suite-home,.suite-home-inner{color:var(--suite-ink)!important}
+.suite-hero,.suite-module-card,.suite-lower-panel{color:#193448!important;box-shadow:0 8px 22px rgba(26,66,91,.045)}
+.suite-hero h1,.suite-module-card h3,.suite-section-title h2,.suite-lower-panel h3{color:#17354a!important}
+.suite-hero p,.suite-module-card p,.suite-section-title p,.suite-lower-panel p{color:#4b6575!important}
+.suite-module-card:hover{box-shadow:0 14px 35px rgba(18,84,125,.12);border-color:#85b3ce!important}
+.suite-module-card .suite-card-index,.suite-tiny{color:#456479!important}
+.suite-recent-list button,.suite-route-step{color:#183b52!important;border-color:var(--suite-line)!important}
+/* Slides — apenas UI, nunca altera a cor de objetos dentro do PPTX. */
+body[data-forma-app="slides"] .rail,body[data-forma-app="slides"] .topbar,
+body[data-forma-app="slides"] .workhead,
+body[data-forma-app="slides"] .inspector,
+body[data-forma-app="slides"] .slides-panel,
+body[data-forma-app="slides"] .stage-area{background:var(--suite-side)!important;color:var(--suite-ink)!important;border-color:var(--suite-line)!important}
+body[data-forma-app="slides"] .railbtn,body[data-forma-app="slides"] .studio-link,
+body[data-forma-app="slides"] .brandtext strong,
+body[data-forma-app="slides"] .crumb-current,
+body[data-forma-app="slides"] .decktitle,
+body[data-forma-app="slides"] .rail-label{color:#24465a!important}
+body[data-forma-app="slides"] .railbtn:hover,body[data-forma-app="slides"] .railbtn.active{background:#d7e7f1!important;color:#0e4565!important;border-color:#a0bfce!important}
+body[data-forma-app="slides"] .btn:not(.primary),body[data-forma-app="slides"] .ghost,
+body[data-forma-app="slides"] .tinytool{background:#fff!important;color:#224458!important;border-color:#b9cfdd!important}
+body[data-forma-app="slides"] input:not([type="color"]),body[data-forma-app="slides"] textarea,body[data-forma-app="slides"] select{
+  background:#fff!important;color:#17394d!important;border-color:#aebfc9!important;
+}
+body[data-forma-app="slides"] .privacy,body[data-forma-app="slides"] .railbottom,
+body[data-forma-app="slides"] .stage-caption{color:#486476!important}
+body[data-forma-app="slides"] #slideStage{color:inherit} /* conteúdos e imagens do usuário preservados */
+/* Research — corrigir superfícies que tinham backgrounds escuros literais. */
+body[data-forma-app="research"] .rail,body[data-forma-app="research"] .topbar,
+body[data-forma-app="research"] .main,
+body[data-forma-app="research"] .content{background:var(--suite-bg)!important;color:var(--suite-ink)!important;border-color:var(--suite-line)!important}
+body[data-forma-app="research"] .rail{background:var(--suite-side)!important}
+body[data-forma-app="research"] .topbar{background:#edf3f7!important}
+body[data-forma-app="research"] .hero{background:linear-gradient(100deg,#e3edf4,#faffff)!important;color:#17384d!important;border-color:#afc5d4!important}
+body[data-forma-app="research"] .hero h1,body[data-forma-app="research"] .hero strong,
+body[data-forma-app="research"] .project-card h3{color:#163a50!important}
+body[data-forma-app="research"] .hero p,body[data-forma-app="research"] .hero small{color:#486577!important}
+body[data-forma-app="research"] .project-card,body[data-forma-app="research"] .resource-card,
+body[data-forma-app="research"] .modal,body[data-forma-app="research"] .status-row,
+body[data-forma-app="research"] .metric,body[data-forma-app="research"] .panel,
+body[data-forma-app="research"] .card{background:#fff!important;color:#17394c!important;border-color:#c0d1dc!important}
+body[data-forma-app="research"] .project-card p,body[data-forma-app="research"] .metric small,
+body[data-forma-app="research"] .rail-label,body[data-forma-app="research"] .brand-text small{color:#476577!important}
+body[data-forma-app="research"] .nav-link,body[data-forma-app="research"] .suite-link{color:#26495f!important}
+body[data-forma-app="research"] .nav-link:hover,body[data-forma-app="research"] .nav-link.active{
+  background:#d6e7f1!important;color:#104b6c!important;border-color:#91b9cd!important
+}
+body[data-forma-app="research"] .btn,body[data-forma-app="research"] .status-row,
+body[data-forma-app="research"] .round-mini{background:#e8f0f6!important;color:#19435d!important;border-color:#b6cbd9!important}
+body[data-forma-app="research"] .btn.primary,body[data-forma-app="research"] .btn.accent{background:#165d85!important;color:#fff!important;border-color:#165d85!important}
+body[data-forma-app="research"] .field input,body[data-forma-app="research"] .field select,
+body[data-forma-app="research"] .field textarea,body[data-forma-app="research"] .input,
+body[data-forma-app="research"] .search-input,body[data-forma-app="research"] textarea,body[data-forma-app="research"] select{
+  background:#fff!important;color:#183a4d!important;border-color:#aebfc9!important;
+}
+body[data-forma-app="research"] input::placeholder,body[data-forma-app="research"] textarea::placeholder{color:#597382!important}
+body[data-forma-app="research"] .modal-back{background:#122a3b9c!important}
+/* Navegação ao toque: rolagem vertical em toda a página do Editor; sem painéis aninhados que a prendam. */
+@media screen and (max-width:850px){
+  html,body{height:auto!important;min-height:100%!important;overflow-x:hidden!important;overflow-y:auto!important;overscroll-behavior-y:auto;}
+  body[data-forma-app="studio"] .app-shell{height:auto!important;min-height:100dvh!important;display:flex!important;overflow:visible!important}
+  body[data-forma-app="studio"] .app-main{height:auto!important;min-height:100dvh!important;overflow:visible!important;display:flex!important}
+  body[data-forma-app="studio"] .work-area{height:auto!important;min-height:100dvh!important;overflow:visible!important;flex:1 1 auto!important}
+  body[data-forma-app="studio"] .workspace-canvas{display:block!important;min-height:0!important;height:auto!important;overflow:visible!important;flex:1 1 auto!important}
+  body[data-forma-app="studio"] .content-area{height:auto!important;min-height:0!important;max-height:none!important;overflow-y:visible!important;overflow-x:hidden!important;padding-bottom:95px!important;touch-action:pan-y pinch-zoom;-webkit-overflow-scrolling:touch}
+  body[data-forma-app="studio"] .content-width,
+  body[data-forma-app="studio"] .studio-editor,
+  body[data-forma-app="studio"] .editor-paper{height:auto!important;max-height:none!important;overflow:visible!important}
+  body[data-forma-app="studio"] .topbar{position:sticky;top:0;z-index:29}
+  body[data-forma-app="studio"] .views-bar{flex-shrink:0;min-height:46px}
+  body[data-forma-app="studio"] .sidebar{position:fixed!important;height:100dvh!important;overflow-y:auto!important;-webkit-overflow-scrolling:touch;}
+  body[data-forma-app="studio"] .section-editor{min-height:130px;touch-action:manipulation;-webkit-user-select:text;user-select:text;overflow-wrap:anywhere}
+  body[data-forma-app="studio"] .special-page{height:auto!important;min-height:calc(100dvh - 60px);overflow:visible!important}
+  body[data-forma-app="studio"] .inspector{display:none!important}
+  body[data-forma-app="studio"] .inspector-mobile-open{display:flex!important}
+}
+@media screen and (max-width:600px){
+  body[data-forma-app="studio"] .app-shell{display:block!important}
+  body[data-forma-app="studio"] .work-head{flex-wrap:wrap;gap:7px}
+  body[data-forma-app="studio"] .editor-paper{margin:14px auto!important;width:calc(100% - 16px)!important;padding:19px 15px 30px!important}
+  body[data-forma-app="studio"] .section-editor{font-size:14px!important;line-height:1.75!important}
+}
+@media print{
+  body[data-forma-app="studio"] .editor-paper,body[data-forma-app="studio"] .paper-sheet{background:white!important;color:black!important;}
+  .suite-fixed-nav{display:none!important}
+}

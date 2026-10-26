@@ -76,10 +76,12 @@ doc.sections[2].html='<p>Descrever as fontes consultadas, os procedimentos reali
 doc.sections[3].html='<p>Apresentar evidências concretas, separando observações de interpretações. Os números de exemplo devem ser substituídos por dados reais.</p>';
 return doc;}
 let state={version:1,activeId:null,docs:[],lastView:'write'};
-let currentView='write', page='home', activeSectionId=null, panel='format', focus=false, undoStack=[],redoStack=[],renderQueued=false,saveTimer=null,toastTimer=null, selectedTemplate='business';
+let currentView='write', page='workspace', activeSectionId=null, panel='format', focus=false, undoStack=[],redoStack=[],renderQueued=false,saveTimer=null,toastTimer=null, selectedTemplate='business';
 try{const stored=localStorage.getItem(STORE);if(stored){const parsed=JSON.parse(stored);if(parsed&&Array.isArray(parsed.docs)){state={...state,...parsed};}}}catch(e){console.warn('Armazenamento indisponível',e)}
 if(!state.docs.length){const d=demoDocument();state.docs=[d];state.activeId=d.id;}if(!state.docs.some(d=>d.id===state.activeId))state.activeId=state.docs[0].id;
 currentView=['write','map','paper'].includes(state.lastView)?state.lastView:'write';
+try{const requested=new URLSearchParams(location.search).get('doc');if(requested&&state.docs.some(d=>d.id===requested))state.activeId=requested;}catch{}
+
 function doc(){return state.docs.find(d=>d.id===state.activeId)||state.docs[0]}
 let warnedStorage=false;function saveNow(){try{state.version=1;localStorage.setItem(STORE,JSON.stringify(state));$('#saveStatus').innerHTML='<span class="saved-mark">●</span> Salvo neste dispositivo';return true}catch(e){$('#saveStatus').innerHTML='<span class="saved-mark" style="color:#d78264">●</span> Sem salvamento local';if(!warnedStorage){warnedStorage=true;notify('Salvamento automático indisponível aqui. Exporte uma cópia pelo menu.');}return false;}}
 function scheduleSave(){doc().updated=Date.now();$('#saveStatus').innerHTML='<span class="saved-mark">●</span> Salvando…';clearTimeout(saveTimer);saveTimer=setTimeout(saveNow,420)}
@@ -91,7 +93,7 @@ function totalWords(d=doc()){return d.sections.reduce((a,s)=>a+words(plain(s.htm
 function guideFor(title){return guides.find(g=>g.rx.test(normalize(title)))||genericGuide}
 function sectionById(id){return doc().sections.find(s=>s.id===id)}
 function markNav(which){$$('[data-nav]').forEach(x=>x.classList.toggle('active',x.dataset.nav===which))}
-function setPage(which){$('#inspector')?.classList.remove('inspector-mobile-open');page=which;document.body.dataset.formaPage=which;$('#suiteHome').classList.toggle('hidden',which!=='home');$('#editorWorkspace').classList.toggle('hidden',which!=='workspace');$('#specialPage').classList.toggle('hidden',which==='workspace'||which==='home');markNav(which);closeSidebar();render();}
+function setPage(which){if(which==='home'){location.href='../';return;}$('#inspector')?.classList.remove('inspector-mobile-open');page=which;document.body.dataset.formaPage=which;$('#suiteHome')?.classList.toggle('hidden',which!=='home');$('#editorWorkspace').classList.toggle('hidden',which!=='workspace');$('#specialPage').classList.toggle('hidden',which==='workspace'||which==='home');markNav(which);closeSidebar();render();}
 function setView(view){currentView=view;state.lastView=view;$$('.view-tab').forEach(x=>x.classList.toggle('active',x.dataset.view===view));saveNow();renderContent();renderOutline();renderInspector();}
 function render(){renderSidebar();document.body.dataset.formaPage=page;if(page==='home'){$('#crumbName').textContent='Início';document.dispatchEvent(new Event('forma:home'));}else if(page==='workspace'){renderHead();renderContent();renderOutline();renderInspector()}else renderSpecial();}
 function renderSidebar(){let d=doc();$('#docCounter').textContent=state.docs.length;$('#docList').innerHTML=state.docs.slice().sort((a,b)=>b.updated-a.updated).map(x=>`<button class="doc-link ${x.id===d.id?'selected':''}" data-open-doc="${esc(x.id)}" title="${esc(x.title)}"><span class="doc-link-text">${esc(x.title)}</span></button>`).join('');}
@@ -247,3 +249,4 @@ const originalKeyHandler=null;
 window.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();openCommand()}if(e.key==='Escape')closeCommand();if(e.key==='Enter'&&!$('#commandLayer').classList.contains('hidden')&&e.target.id==='commandSearch'){e.preventDefault();$('#commandResults button')?.click()}});
 window.addEventListener('pagehide',saveNow);
 render();saveNow();
+try{if(new URLSearchParams(location.search).get('new')==='1')setTimeout(()=>createDocument(),80);}catch{}

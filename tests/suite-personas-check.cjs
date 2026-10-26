@@ -1,20 +1,19 @@
-const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
-const read=f=>fs.readFileSync(f,'utf8');
-for(const js of ['suite-preferences.js','suite-documents.js','suite-home.js','app.js','slides/app.js','research/app.js']){new vm.Script(read(js),{filename:js});console.log('JavaScript válido:',js)}
-const pref=read('suite-preferences.js'),css=read('suite-personas.css'),docs=read('suite-documents.css');
-const home=read('index.html'),slides=read('slides/index.html'),research=read('research/index.html');
-for(const mode of ['executive','signature','technical','institutional']){
- assert(pref.includes(`${mode}:{name:`),`Estilo ausente: ${mode}`);
- assert(css.includes(`data-forma-persona="${mode}"`),`Estilo não definido em CSS: ${mode}`);
+const fs=require('node:fs'),assert=require('node:assert/strict'),vm=require('node:vm');
+const read=p=>fs.readFileSync(p,'utf8');
+const central=read('index.html'),editor=read('editor/index.html'),slides=read('slides/index.html'),research=read('research/index.html');
+for(const [name,html] of [['Central',central],['Editor',editor],['Slides',slides],['Research',research]]){
+  assert(html.includes('suite-fixed.css'),name+': aparência única ausente');
+  assert(html.includes('data-forma-theme="porcelain"')&&html.includes('data-forma-persona="technical"'),name+': tema Técnico Porcelana ausente');
+  assert(!html.includes('suite-preferences.js'),name+': seletor antigo não deveria carregar');
 }
-for(const mode of ['studio','gallery','compact'])assert(pref.includes(`${mode}:{name:`),`Layout ausente: ${mode}`);
-for(const color of ['jade','graphite','cobalt','aurora','ivory','navy','porcelain'])assert(pref.includes(`${color}:{name:`),`Paleta ausente: ${color}`);
-for(const [name,html] of [['Início',home],['Apresentações',slides],['Pesquisas',research]]){
- assert(html.includes('suite-personas.css'),`${name}: estilos não importados`);
- assert(html.includes('suite-preferences.js'),`${name}: preferências compartilhadas ausentes`);
-}
-assert(home.includes('suite-documents.js')&&home.includes('suite-documents.css'),'Módulo de documentos ausente');
-assert(docs.includes('suite-docs-expanded')&&read('suite-documents.js').includes('suiteDocSearch'),'Biblioteca ampliada ausente');
-assert(home.includes('id="docList"')&&home.includes('id="btnNewDocSide"'),'Documentos existentes não devem ser apagados');
-assert(pref.includes("const KEY='forma.suite.preferences.v1'"),'Preferências não devem trocar de chave');
-console.log('PASS: personalidades, paletas, lista ampliada, suíte compatível');
+assert(central.includes('href="./editor/"')&&central.includes('href="./slides/"')&&central.includes('href="./research/"'),'Central sem links separados');
+assert(!central.includes('id="editorWorkspace"')&&!central.includes('src="app.js"'),'Editor continua embutido na central');
+assert(editor.includes('id="editorWorkspace"')&&editor.includes('src="../app.js"')&&editor.includes('id="docList"'),'Editor separado incompleto');
+assert(read('app.js').includes("const STORE='forma.studio.v1'"),'Documentos devem continuar na mesma chave');
+assert(read('app.js').includes("page='workspace'"),'Editor deve abrir direto na edição');
+assert(read('research/app.js').includes("../editor/?importResearch=1"),'Integração Research → Editor não foi atualizada');
+assert(read('suite-home.js').includes('./editor/?doc='),'Central não localiza documentos no Editor');
+assert(read('suite-fixed.css').includes('touch-action:pan-y')&&read('suite-fixed.css').includes('overflow-y:visible'),'Correção de rolagem móvel ausente');
+assert(read('sw.js').includes("'./editor/index.html'"),'Editor não entrou no cache offline');
+for(const p of ['app.js','suite-home.js','slides/app.js','research/app.js','sw.js'])new vm.Script(read(p),{filename:p});
+console.log('PASS: FORMA V6 — quatro rotas independentes, tema único, toque e dados preservados');
