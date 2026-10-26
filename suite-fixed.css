@@ -136,3 +136,8 @@ body[data-forma-app="research"] .modal-back{background:#122a3b9c!important}
   body[data-forma-app="studio"] .editor-paper,body[data-forma-app="studio"] .paper-sheet{background:white!important;color:black!important;}
   .suite-fixed-nav{display:none!important}
 }
+/* Touch scrolling: both overflow axes must be visible. Hidden on X would compute visible Y to auto. */
+@media screen and (max-width:850px){
+ body[data-forma-app="studio"] .content-area{overflow-x:visible!important;overflow-y:visible!important;max-width:100%;}
+ body[data-forma-app="studio"] .content-width{max-width:100%;min-width:0}
+}
