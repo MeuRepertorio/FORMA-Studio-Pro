@@ -1,0 +1,45 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0b111a">
+<title>FORMA Slides — Editor de apresentações</title><meta name="description" content="Editor visual de slides: importar PPTX, ajustar textos e imagens e exportar PPTX, PDF e PNG sem PowerPoint instalado."><link rel="icon" href="icon.svg"><link rel="manifest" href="manifest.webmanifest"><link rel="stylesheet" href="style.css"></head>
+<body><div class="app" id="app">
+ <aside class="rail" id="rail">
+  <div class="brand"><a href="../" title="Voltar ao FORMA Studio Pro" class="brandmark">F<span>.</span></a><div class="brandtext"><strong>FORMA <em>SLIDES</em></strong><small>DESIGN WORKSPACE</small></div><button class="ghost icon mobile" id="closeRail" aria-label="Fechar menu">×</button></div>
+  <div class="rail-label">PROJETO</div>
+  <button class="railbtn active" data-tab="editor"><span>▣</span> Editor de slides</button>
+  <button class="railbtn" data-tab="templates"><span>◈</span> Modelos profissionais</button>
+  <button class="railbtn" data-tab="brand"><span>◉</span> Identidade visual</button>
+  <div class="railrule"></div>
+  <div class="rail-label">ADICIONAR AO SLIDE</div>
+  <button class="railbtn" id="addText"><span>T</span> Caixa de texto</button>
+  <button class="railbtn" id="addShape"><span>▢</span> Forma</button>
+  <button class="railbtn" id="addCircle"><span>◯</span> Círculo</button>
+  <button class="railbtn" id="addImage"><span>▧</span> Imagem ou logo</button>
+  <div class="railrule"></div>
+  <div class="rail-label">FLUXO RÁPIDO</div>
+  <button class="railbtn" id="railImport"><span>↥</span> Abrir PPTX</button>
+  <button class="railbtn" id="railPDF"><span>↧</span> Baixar PDF</button>
+  <div class="railbottom"><div class="privacy"><i></i><div><strong>Arquivos no seu navegador</strong><small>Sem envio para um servidor do FORMA</small></div></div><a class="studio-link" href="../">↗ Voltar ao FORMA Studio Pro</a><div class="railfoot">FORMA SLIDES · BETA 1.0</div></div>
+ </aside>
+ <div class="main">
+  <header class="topbar"><div class="crumb"><button class="mobile icon ghost" id="openRail" aria-label="Abrir menu">☰</button><span class="crumb-icon">◈</span> FORMA STUDIO <b>/</b> <span class="crumb-current">Apresentações</span></div>
+   <div class="topactions"><span class="save-indicator" id="saveBadge">● Salvo neste navegador</span><button class="btn subtle" id="openFile">↥ <span>Importar</span></button><button class="btn soft" id="exportPptx">↧ <span>PPTX</span></button><button class="btn primary" id="exportPdf">↧ <span>Exportar PDF</span></button></div>
+  </header>
+  <section class="workhead"><div><div class="eyebrow">ESTÚDIO DE APRESENTAÇÕES <span class="beta">EDITOR VISUAL</span></div><input id="deckTitle" class="decktitle" aria-label="Nome da apresentação" value="Minha apresentação" maxlength="100"><div class="subtitle">Ajuste, organize e exporte. Sem abrir o PowerPoint.</div></div><div class="workheadtools"><button class="btn outline" id="newDeck">+ Nova apresentação</button><button class="btn outline" id="backup">↓ Salvar projeto</button></div></section>
+  <section class="workspace">
+    <aside class="slides-panel" id="slidesPanel"><div class="pane-head"><div><span class="tinylabel">SEQUÊNCIA</span><h2>Slides <small id="slideTotal">01</small></h2></div><button class="round-add" id="addSlide" title="Novo slide" aria-label="Novo slide">+</button></div><div id="slideList" class="slide-list"></div><div class="pane-foot"><button class="sideutil" id="duplicateSlide">⧉ Duplicar</button><button class="sideutil" id="deleteSlide">♲ Excluir</button></div></aside>
+    <section class="editmain"><div class="canvas-toolbar"><div class="toolgroup"><button class="toolchip selected" id="selectTool">↖ <span>Selecionar</span></button><button class="toolchip" id="txtToolbar">T <span>Texto</span></button><button class="toolchip" id="shapeToolbar">▢ <span>Forma</span></button><button class="toolchip" id="imgToolbar">▧ <span>Imagem</span></button><span class="sep"></span><button class="tinytool" id="undo" title="Desfazer (Ctrl+Z)">↶</button><button class="tinytool" id="redo" title="Refazer (Ctrl+Shift+Z)">↷</button></div><div class="toolgroup"><span class="zoomlabel" id="zoomLabel">100%</span><button class="tinytool" id="zoomOut" title="Diminuir zoom">−</button><button class="tinytool" id="zoomIn" title="Aumentar zoom">+</button><button class="tinytool" id="fullPreview" title="Pré-visualização">⛶</button></div></div>
+      <div class="stage-area" id="stageArea"><div class="stage-frame" id="stageFrame"><div class="slide-stage" id="slideStage" tabindex="0" aria-label="Área de edição do slide"></div></div><div class="stage-caption"><span><i></i> EDIÇÃO DIRETA · CLIQUE NOS OBJETOS</span><span id="canvasInfo">16:9 · 960 × 540</span></div></div>
+      <div class="bottom-strip"><div><span class="spark">✦</span> <strong>Edite do seu jeito.</strong> Arraste os elementos ou escolha um na tela para ajustar os detalhes à direita.</div><button class="striplink" id="quickTemplate">Ver modelos →</button></div>
+    </section>
+    <aside class="inspector" id="inspector"><div class="inspector-head"><div><span class="tinylabel">PAINEL DE CONTROLE</span><h2 id="inspectorTitle">Slide</h2></div><button class="tinytool mobile" id="closeInspector">×</button></div><div class="inspector-body" id="inspectorBody"></div><div class="inspect-foot"><span>FORMA / SLIDES</span><span>Propriedades em tempo real</span></div></aside>
+  </section><footer class="status"><div><span class="statusdot"></span><span id="statusMsg">Pronto para editar</span><span class="statussep">·</span><span id="importNote">Edição local</span></div><div><span>16:9</span><span class="statussep">·</span><span>Ctrl+S: backup</span><span class="statussep">·</span><span id="footerSlide">Slide 1 de 1</span></div></footer>
+ </div>
+</div>
+<input id="filePicker" type="file" accept=".pptx,.json" hidden><input id="imagePicker" type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml" hidden>
+<div class="overlay hidden" id="overlay"><div class="overlay-shade" data-dismiss="1"></div><div class="modal" role="dialog" aria-modal="true"><div class="modal-top"><div><div class="eyebrow">FORMA SLIDES</div><h2 id="modalTitle">Modelos</h2></div><button class="tinytool" id="modalClose" aria-label="Fechar">×</button></div><div id="modalContent" class="modal-content"></div></div></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<!-- Dependências de exportação; carregadas no navegador, sem servidor próprio. -->
+<script src="vendor/jszip.min.js" onerror="this.onerror=null;this.src='https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js'"></script>
+<script src="vendor/pptxgen.bundle.js" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/npm/pptxgenjs@4.0.0/dist/pptxgen.bundle.js'"></script>
+<script src="app.js"></script><script>if("serviceWorker" in navigator && location.protocol.startsWith("http")) navigator.serviceWorker.register("./sw.js").catch(()=>{});</script>
+</body></html>
