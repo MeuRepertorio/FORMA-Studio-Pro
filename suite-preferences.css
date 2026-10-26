@@ -45,3 +45,13 @@ body[data-forma-app="research"] .rail{background:var(--suite-side)!important;bor
 :root[data-forma-theme="ivory"] body[data-forma-app="studio"] .topbar .top-crumb,:root[data-forma-theme="ivory"] body[data-forma-app="studio"] .topbar .top-location-icon{color:#324b48}
 @media(max-width:760px){.suite-appearance-label{display:none}.suite-appearance-button{padding:8px 10px!important}.suite-theme-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.suite-layout-grid{grid-template-columns:1fr}.suite-pref-content{padding:18px}.suite-pref-head,.suite-pref-foot{padding:17px 18px}.suite-pref-head h2{font-size:26px}:root[data-forma-layout="compact"] body[data-forma-app="studio"] .sidebar,:root[data-forma-layout="gallery"] body[data-forma-app="studio"] .sidebar{width:262px}:root[data-forma-layout="compact"] body[data-forma-app="slides"] .rail,:root[data-forma-layout="gallery"] body[data-forma-app="slides"] .rail{width:245px;flex-basis:245px}:root[data-forma-layout="compact"] body[data-forma-app="research"] .rail,:root[data-forma-layout="gallery"] body[data-forma-app="research"] .rail{width:256px;flex-basis:256px}}
 @media(prefers-reduced-motion:reduce){.suite-pref-dialog *,.suite-appearance-button{transition:none!important;animation:none!important}}
+/* FORMA V4: melhor contraste no tema claro e início sem controles do editor. */
+body[data-forma-app="studio"][data-forma-page="home"] .topbar #saveStatus,body[data-forma-app="studio"][data-forma-page="home"] .topbar #btnImport,body[data-forma-app="studio"][data-forma-page="home"] .topbar #btnNewDoc{display:none!important}
+body[data-forma-app="studio"] .suite-tool-label{margin-top:16px}
+:root[data-forma-theme="ivory"] body[data-forma-app="research"] .hero{background:linear-gradient(112deg,#e2eee6,#f7f6f0);border-color:#c8dace}
+:root[data-forma-theme="ivory"] body[data-forma-app="research"] .hero p{color:#58716a}
+:root[data-forma-theme="ivory"] body[data-forma-app="research"] .project-card,:root[data-forma-theme="ivory"] body[data-forma-app="research"] .resource-card,:root[data-forma-theme="ivory"] body[data-forma-app="research"] .modal{background:#fffcf6;border-color:#d8d7cf;color:#23393a}
+:root[data-forma-theme="ivory"] body[data-forma-app="research"] .topbar,:root[data-forma-theme="ivory"] body[data-forma-app="slides"] .topbar{background:#f1efe9;color:#23393a;border-color:#d8d7cf}
+:root[data-forma-theme="ivory"] body[data-forma-app="research"] .hero:before{opacity:.13}
+:root[data-forma-theme="ivory"] body[data-forma-app="slides"] .main{background:#f4f3ef;color:#23393a}
+:root[data-forma-theme="ivory"] body[data-forma-app="studio"] .sidebar .brand-pro{color:#a17a47}
