@@ -1,0 +1,249 @@
+/* Editor FORMA — area de trabalho exclusiva e paineis sob demanda.
+   Esta folha e carregada somente em /editor/. */
+body[data-forma-app="studio"] .app-main,
+body[data-forma-app="studio"] .work-area,
+body[data-forma-app="studio"] #editorWorkspace {
+  min-width:0;
+}
+body[data-forma-app="studio"] .workspace-canvas {
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr)!important;
+  gap:0!important;
+  min-width:0!important;
+  width:100%;
+  position:relative;
+  isolation:isolate;
+}
+body[data-forma-app="studio"] #content.content-area {
+  grid-column:1;
+  min-width:0!important;
+  width:100%!important;
+  max-width:100%!important;
+  padding-left:0;
+  padding-right:0;
+}
+body[data-forma-app="studio"] #content .content-width {
+  width:100%!important;
+  max-width:1120px!important;
+  min-width:0!important;
+  box-sizing:border-box;
+  margin-inline:auto;
+}
+body[data-forma-app="studio"] #content .studio-editor {
+  width:100%;
+  min-width:0;
+}
+body[data-forma-app="studio"] #content .editor-paper {
+  box-sizing:border-box;
+  width:min(840px, calc(100% - 36px))!important;
+  max-width:100%!important;
+  min-width:0!important;
+  padding:clamp(24px,3vw,48px) clamp(20px,3.4vw,54px) 58px!important;
+  margin:24px auto 18px!important;
+}
+body[data-forma-app="studio"] #content .paper-wrap {
+  width:100%;
+  min-width:0;
+  max-width:100%;
+  box-sizing:border-box;
+  justify-content:center;
+  padding:20px 12px;
+}
+body[data-forma-app="studio"] #content .paper-sheet {
+  box-sizing:border-box;
+  width:min(100%,794px)!important;
+  max-width:100%!important;
+  min-width:0;
+  flex-shrink:1!important;
+  overflow-wrap:anywhere;
+  padding:clamp(24px,5vw,78px)!important;
+}
+body[data-forma-app="studio"] #content .map-grid,
+body[data-forma-app="studio"] #content .section-card,
+body[data-forma-app="studio"] #content .section-editor {
+  min-width:0;
+  max-width:100%;
+  overflow-wrap:anywhere;
+}
+body[data-forma-app="studio"] .views-bar {
+  min-width:0;
+  gap:10px;
+}
+body[data-forma-app="studio"] .views-bar .view-tabs,
+body[data-forma-app="studio"] .views-bar .view-tools {
+  min-width:0;
+}
+body[data-forma-app="studio"] .forma-drawer-trigger {
+  display:inline-flex!important;
+  align-items:center;
+  gap:6px;
+  flex-shrink:0;
+  white-space:nowrap;
+  cursor:pointer;
+  border:1px solid var(--suite-line)!important;
+  background:#fff!important;
+  color:var(--suite-ink)!important;
+}
+body[data-forma-app="studio"] .forma-drawer-trigger[aria-expanded="true"] {
+  border-color:#155c86!important;
+  background:#d9eaf5!important;
+}
+body[data-forma-app="studio"] .forma-drawer-trigger .drawer-label {
+  font-size:11px;
+}
+body[data-forma-app="studio"] .forma-drawer-shade {
+  display:none;
+  position:absolute;
+  inset:0;
+  background:rgba(17,40,57,.28);
+  z-index:30;
+}
+body[data-forma-app="studio"] .forma-drawer-shade.is-visible {
+  display:block;
+}
+body[data-forma-app="studio"] #outlinePanel,
+body[data-forma-app="studio"] #inspector {
+  display:none!important;
+  position:absolute!important;
+  top:0!important;
+  bottom:0!important;
+  height:100%!important;
+  max-height:100%!important;
+  min-width:0!important;
+  box-sizing:border-box;
+  z-index:31;
+  box-shadow:0 12px 40px rgba(24,51,66,.2);
+  overflow:hidden;
+}
+body[data-forma-app="studio"] #outlinePanel {
+  left:0!important;
+  right:auto!important;
+  width:min(280px,calc(100vw - 30px))!important;
+  border-right:1px solid var(--suite-line);
+}
+body[data-forma-app="studio"] #inspector {
+  left:auto!important;
+  right:0!important;
+  width:min(352px,calc(100vw - 30px))!important;
+  border-left:1px solid var(--suite-line);
+}
+body[data-forma-app="studio"] #outlinePanel.forma-drawer-open,
+body[data-forma-app="studio"] #inspector.inspector-mobile-open {
+  display:flex!important;
+  flex-direction:column;
+}
+body[data-forma-app="studio"] #outlinePanel .outline-scroll,
+body[data-forma-app="studio"] #inspector .inspector-body {
+  min-height:0;
+  flex:1 1 auto;
+  overflow-y:auto!important;
+  overscroll-behavior:contain;
+}
+body[data-forma-app="studio"] .forma-drawer-close {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex:none;
+  width:30px;
+  height:30px;
+  padding:0;
+  border:1px solid var(--suite-line);
+  border-radius:7px;
+  background:#fff;
+  color:var(--suite-ink);
+  cursor:pointer;
+  font-size:20px;
+}
+body[data-forma-app="studio"] .forma-drawer-close:hover {
+  background:#e0edf4;
+}
+body[data-forma-app="studio"] .forma-outline-actions {
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+body[data-forma-app="studio"] #inspector .inspector-tabs {
+  align-items:center;
+  padding-right:8px;
+}
+body[data-forma-app="studio"] #inspector .inspector-tab {
+  min-width:0;
+}
+body[data-forma-app="studio"] #inspector .forma-drawer-close {
+  width:27px;
+  height:27px;
+  margin-left:5px;
+}
+body[data-forma-app="studio"].focus-mode #outlinePanel,
+body[data-forma-app="studio"].focus-mode #inspector,
+body[data-forma-app="studio"].focus-mode .forma-drawer-shade {
+  display:none!important;
+}
+@media(max-width:1080px) {
+  body[data-forma-app="studio"] .views-bar .word-counter { display:none; }
+  body[data-forma-app="studio"] .forma-drawer-trigger .drawer-label { display:none; }
+}
+@media(max-width:850px) {
+  body[data-forma-app="studio"] .workspace-canvas {
+    display:block!important;
+    height:auto!important;
+    min-height:0!important;
+    overflow:visible!important;
+  }
+  body[data-forma-app="studio"] #content.content-area {
+    height:auto!important;
+    overflow:visible!important;
+    touch-action:pan-y pinch-zoom!important;
+    padding-bottom:90px!important;
+  }
+  body[data-forma-app="studio"] #outlinePanel.forma-drawer-open,
+  body[data-forma-app="studio"] #inspector.inspector-mobile-open {
+    position:fixed!important;
+    top:0!important;
+    bottom:0!important;
+    max-height:100dvh!important;
+    height:100dvh!important;
+    z-index:152;
+  }
+  body[data-forma-app="studio"] .forma-drawer-shade.is-visible {
+    position:fixed;
+    inset:0;
+    z-index:151;
+  }
+  body[data-forma-app="studio"] .views-bar {
+    flex-wrap:wrap;
+    gap:4px;
+  }
+}
+@media(max-width:600px) {
+  body[data-forma-app="studio"] #content .editor-paper {
+    width:calc(100% - 16px)!important;
+    max-width:calc(100% - 16px)!important;
+    margin:12px auto 16px!important;
+    padding:20px 15px 35px!important;
+  }
+  body[data-forma-app="studio"] #content .content-width {
+    padding:18px 12px!important;
+  }
+  body[data-forma-app="studio"] #content .paper-wrap {
+    padding:12px 0!important;
+  }
+  body[data-forma-app="studio"] #content .paper-sheet {
+    padding:24px 18px 38px!important;
+    min-height:0!important;
+  }
+  body[data-forma-app="studio"] .view-tools { gap:5px; }
+  body[data-forma-app="studio"] .forma-drawer-trigger { padding:7px 8px; }
+}
+@media print {
+  body[data-forma-app="studio"] #outlinePanel,
+  body[data-forma-app="studio"] #inspector,
+  body[data-forma-app="studio"] .forma-drawer-shade,
+  body[data-forma-app="studio"] .forma-drawer-trigger {
+    display:none!important;
+  }
+  body[data-forma-app="studio"] #content .paper-sheet {
+    width:100%!important;
+    max-width:none!important;
+  }
+}
